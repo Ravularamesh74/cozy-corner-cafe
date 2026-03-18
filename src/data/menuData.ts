@@ -9,6 +9,9 @@ import pasta from "@/assets/pasta.jpg";
 import sandwich from "@/assets/sandwich.jpg";
 import momos from "@/assets/momos.jpg";
 import coldCoffee from "@/assets/cold-coffee.jpg";
+import pizza from "@/assets/pizza.jpg";
+import wings from "@/assets/wings.jpg";
+import mojito from "@/assets/mojito.jpg";
 
 export const menuItems: MenuItem[] = [
   {
@@ -107,6 +110,37 @@ export const menuItems: MenuItem[] = [
   },
   {
     id: "10",
+    name: "Margherita Pizza",
+    description: "Classic thin crust with fresh mozzarella and basil.",
+    price: 180,
+    image: pizza,
+    category: "Pizza",
+    rating: 4.8,
+    reviews: 35,
+  },
+  {
+    id: "11",
+    name: "Crispy Chicken Wings",
+    description: "Golden fried wings tossed in signature spicy glaze.",
+    price: 189,
+    image: wings,
+    category: "Starters",
+    rating: 4.9,
+    reviews: 41,
+    isBestseller: true,
+  },
+  {
+    id: "12",
+    name: "Peri Peri Fries",
+    description: "Seasoned fries tossed in house peri peri spice blend.",
+    price: 139,
+    image: fries,
+    category: "Starters",
+    rating: 4.6,
+    reviews: 25,
+  },
+  {
+    id: "13",
     name: "Veg Cheese Burger",
     description: "Crispy veggie patty with cheddar, lettuce and pickles.",
     price: 159,
@@ -117,23 +151,33 @@ export const menuItems: MenuItem[] = [
     isVeg: true,
   },
   {
-    id: "11",
-    name: "Peri Peri Fries",
-    description: "Seasoned fries tossed in house peri peri spice blend.",
-    price: 139,
-    image: fries,
-    category: "Starters",
-    rating: 4.6,
-    reviews: 25,
+    id: "14",
+    name: "Virgin Mojito",
+    description: "Refreshing lime, mint and soda with crushed ice.",
+    price: 99,
+    image: mojito,
+    category: "Beverages",
+    rating: 4.8,
+    reviews: 33,
   },
   {
-    id: "12",
+    id: "15",
     name: "Iced Americano",
     description: "Double shot espresso over ice, clean and bold.",
     price: 89,
     image: coldCoffee,
     category: "Beverages",
     rating: 4.8,
-    reviews: 33,
+    reviews: 30,
+  },
+  {
+    id: "16",
+    name: "Chicken Pizza",
+    description: "Loaded with grilled chicken, peppers and onions.",
+    price: 199,
+    image: pizza,
+    category: "Pizza",
+    rating: 4.9,
+    reviews: 37,
   },
 ];

@@ -20,6 +20,7 @@ export const categories = [
   "Bestsellers",
   "Starters",
   "Burgers",
+  "Pizza",
   "Pasta",
   "Sandwiches",
   "Beverages",
