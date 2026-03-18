@@ -29,8 +29,8 @@ const CafeHeader = () => {
       </div>
 
       <div className="flex items-center gap-1.5 mb-2">
-        <div className="h-2 w-2 rounded-full bg-emerald-500 animate-pulse" />
-        <span className="text-xs text-emerald-400 font-medium">Open</span>
+        <div className="h-2 w-2 rounded-full bg-primary animate-pulse" />
+        <span className="text-xs text-primary font-medium">Open</span>
         <span className="text-xs text-muted-foreground">· Closes 11:30 PM</span>
       </div>
 
