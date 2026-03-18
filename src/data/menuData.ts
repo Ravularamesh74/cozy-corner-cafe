@@ -35,6 +35,7 @@ export const menuItems: MenuItem[] = [
     rating: 4.9,
     reviews: 42,
     isBestseller: true,
+    isCustomizable: true,
   },
   {
     id: "3",
@@ -45,6 +46,7 @@ export const menuItems: MenuItem[] = [
     category: "Pasta",
     rating: 4.8,
     reviews: 38,
+    isCustomizable: true,
   },
   {
     id: "4",
@@ -66,6 +68,7 @@ export const menuItems: MenuItem[] = [
     category: "Sandwiches",
     rating: 4.7,
     reviews: 31,
+    isCustomizable: true,
   },
   {
     id: "6",
@@ -117,6 +120,7 @@ export const menuItems: MenuItem[] = [
     category: "Pizza",
     rating: 4.8,
     reviews: 35,
+    isCustomizable: true,
   },
   {
     id: "11",
@@ -149,6 +153,7 @@ export const menuItems: MenuItem[] = [
     rating: 4.7,
     reviews: 28,
     isVeg: true,
+    isCustomizable: true,
   },
   {
     id: "14",
@@ -179,5 +184,6 @@ export const menuItems: MenuItem[] = [
     category: "Pizza",
     rating: 4.9,
     reviews: 37,
+    isCustomizable: true,
   },
 ];

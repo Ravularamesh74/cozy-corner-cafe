@@ -14,83 +14,106 @@ const MenuCard = ({ item, cartItem, onAdd, onRemove }: MenuCardProps) => {
 
   return (
     <motion.div
-      initial={{ opacity: 0, y: 12 }}
+      initial={{ opacity: 0, y: 10 }}
       animate={{ opacity: 1, y: 0 }}
-      whileTap={{ scale: 0.98 }}
-      className="group relative flex items-center gap-4 p-3 rounded-2xl transition-colors"
-      style={{ boxShadow: "var(--card-shadow)", backgroundColor: "hsl(var(--card))" }}
+      whileHover={{ y: -3 }}
+      className="group relative flex gap-4 p-3 rounded-2xl bg-card border border-border/40 hover:shadow-lg transition-all"
     >
-      <div className="relative h-20 w-20 shrink-0 overflow-hidden rounded-xl bg-secondary">
+      {/* 🔥 IMAGE */}
+      <div className="relative h-24 w-24 shrink-0 rounded-xl overflow-hidden">
         <img
           src={item.image}
           alt={item.name}
-          className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-110"
-          loading="lazy"
+          className="h-full w-full object-cover group-hover:scale-110 transition duration-500"
         />
-        <div className="absolute inset-0 rounded-xl ring-1 ring-inset ring-foreground/10" />
+
+        {/* RATING BADGE */}
+        <div className="absolute top-1 right-1 bg-black/70 text-white text-[10px] px-1.5 py-0.5 rounded flex items-center gap-1">
+          <Star size={10} className="fill-yellow-400 text-yellow-400" />
+          {item.rating}
+        </div>
+
+        {/* BESTSELLER */}
         {item.isBestseller && (
-          <div className="absolute top-1 left-1 px-1.5 py-0.5 rounded text-[8px] font-semibold bg-primary text-primary-foreground">
-            ★ BEST
+          <div className="absolute bottom-1 left-1 text-[9px] px-1.5 py-0.5 bg-primary text-white rounded">
+            Bestseller
           </div>
+        )}
+
+        {/* ADD BUTTON ON IMAGE */}
+        {qty === 0 && (
+          <button
+            onClick={() => onAdd(item)}
+            className="absolute bottom-1 right-1 bg-white text-black text-xs px-2 py-1 rounded shadow-md hover:scale-105"
+          >
+            ADD
+          </button>
         )}
       </div>
 
+      {/* 🔥 CONTENT */}
       <div className="flex flex-col flex-1 min-w-0">
+
+        {/* TITLE + PRICE */}
         <div className="flex justify-between items-start gap-2">
-          <h3 className="font-semibold text-sm text-foreground tracking-tight truncate">
+          <h3 className="text-sm font-semibold text-foreground truncate">
             {item.name}
           </h3>
-          <span className="font-mono-nums text-primary font-medium text-sm shrink-0">
-            ₹{item.price}
-          </span>
+
+          <div className="text-right">
+            <span className="text-sm font-semibold text-primary">
+              ₹{item.price}
+            </span>
+          </div>
         </div>
 
-        <p className="text-xs text-muted-foreground mt-0.5 line-clamp-2 leading-relaxed">
+        {/* DESCRIPTION */}
+        <p className="text-xs text-muted-foreground mt-1 line-clamp-2">
           {item.description}
         </p>
 
-        <div className="flex items-center justify-between mt-2">
-          <div className="flex items-center gap-1.5">
-            <div className="flex">
-              {[...Array(5)].map((_, i) => (
-                <Star
-                  key={i}
-                  size={9}
-                  className="text-primary/50 fill-primary/50"
-                />
-              ))}
-            </div>
-            <span className="text-[10px] text-muted-foreground">
-              {item.rating} ({item.reviews})
+        {/* TAGS */}
+        <div className="flex gap-2 mt-2 flex-wrap">
+          {item.isBestseller && (
+            <span className="text-[10px] px-2 py-0.5 bg-primary/10 text-primary rounded">
+              Popular
             </span>
-          </div>
+          )}
+          {item.isCustomizable && (
+            <span className="text-[10px] px-2 py-0.5 bg-secondary text-muted-foreground rounded">
+              Customizable
+            </span>
+          )}
+        </div>
 
-          {qty === 0 ? (
-            <motion.button
-              whileTap={{ scale: 0.9 }}
-              onClick={() => onAdd(item)}
-              className="flex items-center justify-center h-7 w-7 rounded-lg bg-primary text-primary-foreground"
-            >
-              <Plus size={14} strokeWidth={2.5} />
-            </motion.button>
-          ) : (
-            <div className="flex items-center gap-2">
+        {/* 🔥 ACTIONS */}
+        <div className="flex justify-between items-center mt-3">
+
+          {/* REVIEWS */}
+          <span className="text-[11px] text-muted-foreground">
+            {item.reviews} reviews
+          </span>
+
+          {/* QUANTITY CONTROL */}
+          {qty > 0 && (
+            <div className="flex items-center gap-2 px-2 py-1 rounded-lg bg-secondary">
+
               <motion.button
-                whileTap={{ scale: 0.9 }}
+                whileTap={{ scale: 0.85 }}
                 onClick={() => onRemove(item.id)}
-                className="flex items-center justify-center h-7 w-7 rounded-lg bg-secondary text-foreground"
               >
-                <Minus size={14} strokeWidth={2.5} />
+                <Minus size={14} />
               </motion.button>
-              <span className="font-mono-nums text-sm font-medium text-foreground w-4 text-center">
+
+              <span className="text-sm font-medium w-4 text-center">
                 {qty}
               </span>
+
               <motion.button
-                whileTap={{ scale: 0.9 }}
+                whileTap={{ scale: 0.85 }}
                 onClick={() => onAdd(item)}
-                className="flex items-center justify-center h-7 w-7 rounded-lg bg-primary text-primary-foreground"
               >
-                <Plus size={14} strokeWidth={2.5} />
+                <Plus size={14} />
               </motion.button>
             </div>
           )}

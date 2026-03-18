@@ -1,3 +1,3 @@
-# Welcome to your Lovable project
+# Welcome to your Cozy Corner Cafe project
 
 TODO: Document your project here

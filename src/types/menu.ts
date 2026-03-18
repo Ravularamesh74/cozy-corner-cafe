@@ -9,6 +9,7 @@ export type MenuItem = {
   reviews: number;
   isVeg?: boolean;
   isBestseller?: boolean;
+  isCustomizable?: boolean;
 };
 
 export type CartItem = MenuItem & {
