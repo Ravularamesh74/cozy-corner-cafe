@@ -1,24 +1,16 @@
-import { useState, useCallback, useMemo } from "react";
-import { MenuItem, CartItem, Category } from "@/types/menu";
-import { menuItems } from "@/data/menuData";
-import CafeHeader from "@/components/CafeHeader";
-import CategoryNav from "@/components/CategoryNav";
-import MenuCard from "@/components/MenuCard";
-import OrderBar from "@/components/OrderBar";
-import OrderSheet from "@/components/OrderSheet";
+import { useState, useCallback } from "react";
+import { MenuItem, CartItem } from "@/types/menu";
+import Navbar from "@/components/Navbar";
+import HeroSection from "@/components/HeroSection";
+import AboutSection from "@/components/AboutSection";
+import GallerySection from "@/components/GallerySection";
+import MenuSection from "@/components/MenuSection";
 import ReviewSection from "@/components/ReviewSection";
+import Footer from "@/components/Footer";
 
 const Index = () => {
-  const [activeCategory, setActiveCategory] = useState<Category>("All");
   const [cart, setCart] = useState<CartItem[]>([]);
   const [orderOpen, setOrderOpen] = useState(false);
-
-  const filteredItems = useMemo(() => {
-    if (activeCategory === "All") return menuItems;
-    if (activeCategory === "Bestsellers")
-      return menuItems.filter((i) => i.isBestseller);
-    return menuItems.filter((i) => i.category === activeCategory);
-  }, [activeCategory]);
 
   const addToCart = useCallback((item: MenuItem) => {
     setCart((prev) => {
@@ -44,31 +36,24 @@ const Index = () => {
   }, []);
 
   return (
-    <div className="min-h-screen bg-background max-w-lg mx-auto relative">
-      <CafeHeader />
-      <ReviewSection />
-      <CategoryNav active={activeCategory} onSelect={setActiveCategory} />
-
-      <main className="px-5 py-4 space-y-3 pb-28">
-        {filteredItems.map((item) => (
-          <MenuCard
-            key={item.id}
-            item={item}
-            cartItem={cart.find((c) => c.id === item.id)}
-            onAdd={addToCart}
-            onRemove={removeFromCart}
-          />
-        ))}
-      </main>
-
-      <OrderBar cart={cart} onViewOrder={() => setOrderOpen(true)} />
-      <OrderSheet
+    <div className="min-h-screen bg-background">
+      <Navbar />
+      <HeroSection />
+      <div id="about">
+        <AboutSection />
+      </div>
+      <div id="gallery">
+        <GallerySection />
+      </div>
+      <MenuSection
         cart={cart}
-        isOpen={orderOpen}
-        onClose={() => setOrderOpen(false)}
         onAdd={addToCart}
         onRemove={removeFromCart}
+        orderOpen={orderOpen}
+        setOrderOpen={setOrderOpen}
       />
+      <ReviewSection />
+      <Footer />
     </div>
   );
 };
