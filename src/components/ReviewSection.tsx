@@ -20,38 +20,55 @@ const reviews = [
 ];
 
 const ReviewSection = () => (
-  <section className="px-5 py-6">
-    <div className="flex items-center gap-3 mb-4">
-      <div className="flex items-center gap-1">
-        <Star size={16} className="text-primary fill-primary" />
-        <span className="text-lg font-semibold text-foreground">5.0</span>
+  <section id="reviews" className="py-16 md:py-24 px-5 md:px-10 max-w-6xl mx-auto">
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.6 }}
+    >
+      <span className="text-xs font-semibold text-primary uppercase tracking-widest">
+        Reviews
+      </span>
+      <div className="flex items-center gap-3 mt-2 mb-6">
+        <h2 className="text-2xl md:text-3xl font-bold text-foreground tracking-tight">
+          Loved by everyone.
+        </h2>
+        <div className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-secondary">
+          <Star size={14} className="text-primary fill-primary" />
+          <span className="text-sm font-semibold text-foreground">5.0</span>
+          <span className="text-xs text-muted-foreground">(54)</span>
+        </div>
       </div>
-      <span className="text-xs text-muted-foreground">54 reviews</span>
-    </div>
+    </motion.div>
 
-    <div className="flex gap-3 overflow-x-auto scrollbar-hide pb-1">
+    <div className="grid grid-cols-1 md:grid-cols-3 gap-3 md:gap-4">
       {reviews.map((r, i) => (
         <motion.div
           key={i}
-          initial={{ opacity: 0, x: 20 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ delay: i * 0.1 }}
-          className="shrink-0 w-64 p-4 rounded-2xl bg-secondary"
+          initial={{ opacity: 0, y: 16 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ delay: i * 0.1, duration: 0.4 }}
+          className="p-5 rounded-2xl bg-card"
+          style={{ boxShadow: "var(--card-shadow)" }}
         >
-          <div className="flex items-center gap-2 mb-2">
-            <div className="h-7 w-7 rounded-full bg-muted flex items-center justify-center text-[10px] font-semibold text-muted-foreground">
+          <div className="flex items-center gap-3 mb-3">
+            <div className="h-9 w-9 rounded-full bg-muted flex items-center justify-center text-xs font-bold text-muted-foreground">
               {r.avatar}
             </div>
-            <span className="text-xs font-medium text-foreground">{r.name}</span>
+            <div>
+              <span className="text-sm font-semibold text-foreground block">{r.name}</span>
+              <div className="flex mt-0.5">
+                {[...Array(5)].map((_, j) => (
+                  <Star key={j} size={10} className="text-primary fill-primary" />
+                ))}
+              </div>
+            </div>
           </div>
-          <p className="text-xs text-muted-foreground leading-relaxed line-clamp-3">
+          <p className="text-sm text-muted-foreground leading-relaxed">
             "{r.text}"
           </p>
-          <div className="flex mt-2">
-            {[...Array(5)].map((_, j) => (
-              <Star key={j} size={9} className="text-primary fill-primary" />
-            ))}
-          </div>
         </motion.div>
       ))}
     </div>
