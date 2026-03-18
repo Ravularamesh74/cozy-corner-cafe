@@ -3,6 +3,7 @@ import { MenuItem, CartItem } from "@/types/menu";
 import Navbar from "@/components/Navbar";
 import HeroSection from "@/components/HeroSection";
 import AboutSection from "@/components/AboutSection";
+import VideoSection from "@/components/VideoSection";
 import GallerySection from "@/components/GallerySection";
 import MenuSection from "@/components/MenuSection";
 import ReviewSection from "@/components/ReviewSection";
@@ -42,6 +43,7 @@ const Index = () => {
       <div id="about">
         <AboutSection />
       </div>
+      <VideoSection />
       <div id="gallery">
         <GallerySection />
       </div>
