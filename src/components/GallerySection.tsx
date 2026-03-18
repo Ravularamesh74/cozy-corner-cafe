@@ -73,9 +73,15 @@ const GallerySection = () => {
 
       {/* CTA */}
       <div className="mt-10 flex justify-center">
-        <button className="px-6 py-3 rounded-xl bg-primary text-white text-sm font-medium hover:scale-105 transition">
-          View More on Instagram
-        </button>
+        <a
+          href="https://www.instagram.com/dark_cafe____"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <button className="px-6 py-3 rounded-xl bg-primary text-white text-sm font-medium hover:scale-105 transition shadow-lg">
+            View More on Instagram
+          </button>
+        </a>
       </div>
 
       {/* 🔥 LIGHTBOX MODAL */}
